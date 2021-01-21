@@ -6,14 +6,16 @@ public class ObjectControl : MonoBehaviour
 {
     bool isPlacingObject;
     GameObject objectPlacing;
-    GameObject blockObject;
+    GameObject platformObject;
     GameObject jumpObject;
+    GameObject crateObject;
     [SerializeField]
     float Distance = 10.0f;
 
     [Header("Prefabs")]
-    public GameObject Block;
+    public GameObject platform;
     public GameObject jumpPad;
+    public GameObject Crate;
 
     void Update()
     {
@@ -35,27 +37,30 @@ public class ObjectControl : MonoBehaviour
 
 		if (Input.GetKeyDown(KeyCode.Space) && !isPlacingObject)
 		{
-            if(blockObject != null)
+            if(platformObject != null)
 			{
-                Destroy(blockObject);
-                blockObject = null;
+                Destroy(platformObject);
 			}
             
             if (jumpObject != null)
 			{
                 Destroy(jumpObject);
-                jumpObject = null;
+			}
+
+            if (crateObject != null)
+			{
+                Destroy(crateObject);
 			}
 		}
     }
 
-    public void OnBlockSelect()
+    public void OnBrandSelect()
     {
-        if (!isPlacingObject && blockObject == null)
+        if (!isPlacingObject && platformObject == null)
         {
             isPlacingObject = true;
-            blockObject = Instantiate(Block, Vector3.zero, Quaternion.identity);
-            objectPlacing = blockObject;
+            platformObject = Instantiate(platform, Vector3.zero, Quaternion.identity);
+            objectPlacing = platformObject;
         }
     }
 
@@ -68,4 +73,14 @@ public class ObjectControl : MonoBehaviour
             objectPlacing = jumpObject;
         }
 	}
+
+    public void OnPutSelect()
+    {
+        if (!isPlacingObject && crateObject == null)
+        {
+            isPlacingObject = true;
+            crateObject = Instantiate(Crate, Vector3.zero, Quaternion.identity);
+            objectPlacing = crateObject;
+        }
+    }
 }
