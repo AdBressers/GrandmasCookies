@@ -6,6 +6,7 @@ public class Control : MonoBehaviour
 {
 	float Distance = 10.0f;
 	Rigidbody rb;
+	bool isUsed;
 
 	private void Start()
 	{
@@ -14,25 +15,21 @@ public class Control : MonoBehaviour
 
 	private void OnMouseDrag()
 	{
-		Vector3 mousePos = Input.mousePosition;
-		mousePos.z = Distance;
-		transform.position = Camera.main.ScreenToWorldPoint(mousePos);
-		rb.velocity = Vector3.zero;
+		if(!isUsed)
+		{
+			Vector3 mousePos = Input.mousePosition;
+			mousePos.z = Distance;
+			transform.position = Camera.main.ScreenToWorldPoint(mousePos);
+			rb.velocity = Vector3.zero;
+		}
 	}
 
 	private void OnTriggerEnter(Collider col)
 	{
-		if(col.tag == gameObject.tag)
+		if(col.tag == gameObject.tag && !isUsed)
 		{
 			transform.localScale = Vector3.one * 2;
-		}
-	}
-
-	private void OnTriggerExit(Collider col)
-	{
-		if (col.tag == gameObject.tag)
-		{
-			transform.localScale = Vector3.one;
+			isUsed = true;
 		}
 	}
 }
