@@ -33,5 +33,10 @@ public class Control : MonoBehaviour
 			rb.isKinematic = true;
 			isUsed = true;
 		}
+
+		if (col.collider.CompareTag("Player"))
+		{
+			isUsed = true;
+		}
 	}
 }
