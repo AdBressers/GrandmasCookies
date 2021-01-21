@@ -24,11 +24,13 @@ public class Control : MonoBehaviour
 		}
 	}
 
-	private void OnTriggerEnter(Collider col)
+	private void OnCollisionEnter(Collision col)
 	{
-		if(col.tag == gameObject.tag && !isUsed)
+		if(gameObject.tag == "Crate" && col.collider.CompareTag("Obstacle") && !isUsed)
 		{
-			transform.localScale = Vector3.one * 2;
+			Destroy(col.gameObject);
+			GetComponent<Collider>().isTrigger = true;
+			rb.isKinematic = true;
 			isUsed = true;
 		}
 	}

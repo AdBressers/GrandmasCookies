@@ -7,6 +7,7 @@ TagManager:
   - Platform
   - Springveer
   - Crate
+  - Obstacle
   layers:
   - Default
   - TransparentFX
