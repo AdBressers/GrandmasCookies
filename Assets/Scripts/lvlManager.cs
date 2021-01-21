@@ -5,32 +5,60 @@ using UnityEngine;
 public class lvlManager : MonoBehaviour
 {
 
+    private const float PLAYER_DISTANCE_SPAWN_LEVEL_PART = 200f;
+
+    
     [SerializeField] private Transform levelPart_Start;
-    [SerializeField] private Transform levelPart_Hole;
-    [SerializeField] private Transform levelPart_Ob;
+    [SerializeField] private List<Transform> levelPartList;
+    public static bool spawn;
+    
 
+    private Vector3 lastEndPosition;
+    public static Vector3 border;
 
-
-    // Start is called before the first frame update
     void Awake()
     {
-        Transform lastLevelPartTransform;
-        lastLevelPartTransform = SpawnLevelPart(levelPart_Start.Find("endpos").position);
-        lastLevelPartTransform = SpawnLevelPart(lastLevelPartTransform.Find("endpos").position);
-        lastLevelPartTransform = SpawnLevelPart(lastLevelPartTransform.Find("endpos").position);
-        lastLevelPartTransform = SpawnLevelPart(lastLevelPartTransform.Find("endpos").position);
+
+        lastEndPosition = levelPart_Start.Find("endpos").position;
+        SpawnLevelPart();
+
+        int startingSpawnLevelParts = 5;
+        for (int i = 0; i < startingSpawnLevelParts; i++)
+        {
+            SpawnLevelPart();
+        }
+
+
+        //Transform lastLevelPartTransform;
+        //lastLevelPartTransform = SpawnLevelPart(levelPart_Start.Find("endpos").position);
+        //lastLevelPartTransform = SpawnLevelPart(lastLevelPartTransform.Find("endpos").position);
+        //lastLevelPartTransform = SpawnLevelPart(lastLevelPartTransform.Find("endpos").position);
+        //lastLevelPartTransform = SpawnLevelPart(lastLevelPartTransform.Find("endpos").position);
     }
 
-    private Transform SpawnLevelPart(Vector3 spawnPosition)
+    private Transform SpawnLevelPart(Transform levelPart, Vector3 spawnPosition)
     {
-        Transform levelPartTransform = Instantiate(levelPart_Hole, spawnPosition, Quaternion.identity);
+
+        Transform levelPartTransform = Instantiate(levelPart, spawnPosition, Quaternion.identity);
         return levelPartTransform;
     }
 
+    private void SpawnLevelPart()
+    {
+        Transform chosenLevelPart = levelPartList[Random.Range(0, levelPartList.Count)];
+        Transform lastLevelartTransform = SpawnLevelPart(chosenLevelPart, lastEndPosition);
+        lastEndPosition = lastLevelartTransform.Find("endpos").position;
+    }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        border = lastEndPosition;
+        if (spawn == true)
+        {
+            SpawnLevelPart();
+            SpawnLevelPart();
+            SpawnLevelPart();
+            spawn = false;
+        }
     }
 }
