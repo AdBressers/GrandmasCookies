@@ -4,6 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - player
+  - deletemap
+  tags:
   - Platform
   - Springveer
   - Crate
