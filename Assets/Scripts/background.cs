@@ -6,7 +6,8 @@ public class background : MonoBehaviour
 {
 
     private float lengte, startpos;
-    public GameObject cam;
+    
+    [SerializeField] private GameObject cam;
     public float parallaxeffect;
 
 
@@ -16,7 +17,7 @@ public class background : MonoBehaviour
     void Start()
     {
         startpos = transform.position.x;
-        lengte = GetComponent<SpriteRenderer>().bounds.size.x;
+        lengte = GetComponent<MeshRenderer>().bounds.size.x;
     }
 
     private void FixedUpdate()
