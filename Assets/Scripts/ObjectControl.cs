@@ -54,7 +54,7 @@ public class ObjectControl : MonoBehaviour
 		}
     }
 
-    public void OnBrandSelect()
+    public void OnPlatformSelect()
     {
         if (!isPlacingObject && platformObject == null)
         {
@@ -74,7 +74,7 @@ public class ObjectControl : MonoBehaviour
         }
 	}
 
-    public void OnPutSelect()
+    public void OnCrateSelect()
     {
         if (!isPlacingObject && crateObject == null)
         {
