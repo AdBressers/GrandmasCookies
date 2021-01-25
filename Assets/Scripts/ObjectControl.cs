@@ -29,7 +29,7 @@ public class ObjectControl : MonoBehaviour
                 if (Input.GetMouseButtonDown(0))
                 {
                     isPlacingObject = false;
-                    objectPlacing.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                    objectPlacing.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
                     objectPlacing = null;
                 }
             }
