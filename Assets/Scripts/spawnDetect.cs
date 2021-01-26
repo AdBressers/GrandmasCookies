@@ -16,8 +16,9 @@ public class spawnDetect : MonoBehaviour
         transform.position = lvlManager.border;
     }
 
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
+       
         if (other.gameObject.CompareTag("Player"))
         {
             lvlManager.spawn = true;
