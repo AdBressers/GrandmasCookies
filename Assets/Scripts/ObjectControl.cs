@@ -29,6 +29,7 @@ public class ObjectControl : MonoBehaviour
                 if (Input.GetMouseButtonDown(0))
                 {
                     isPlacingObject = false;
+                    objectPlacing.GetComponent<Collider2D>().isTrigger = false;
                     objectPlacing.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
                     objectPlacing = null;
                 }
@@ -61,6 +62,7 @@ public class ObjectControl : MonoBehaviour
             isPlacingObject = true;
             platformObject = Instantiate(platform, Vector3.zero, Quaternion.identity);
             objectPlacing = platformObject;
+            objectPlacing.GetComponent<Collider2D>().isTrigger = true;
         }
     }
 
@@ -71,6 +73,7 @@ public class ObjectControl : MonoBehaviour
             isPlacingObject = true;
             jumpObject = Instantiate(jumpPad, Vector3.zero, Quaternion.identity);
             objectPlacing = jumpObject;
+            objectPlacing.GetComponent<Collider2D>().isTrigger = true;
         }
 	}
 
@@ -81,6 +84,7 @@ public class ObjectControl : MonoBehaviour
             isPlacingObject = true;
             crateObject = Instantiate(Crate, Vector3.zero, Quaternion.identity);
             objectPlacing = crateObject;
+            objectPlacing.GetComponent<Collider2D>().isTrigger = true;
         }
     }
 }

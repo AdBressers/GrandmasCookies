@@ -44,6 +44,7 @@ public class Player : MonoBehaviour
 		{
 			col.collider.isTrigger = true;
 			col.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
+			col.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 			rb.AddForce(transform.up * jumpForce);
 		}
 		if (col.gameObject.CompareTag("Obstacle"))

@@ -35,6 +35,7 @@ public class Control : MonoBehaviour
 			Destroy(col.gameObject);
 			GetComponent<Collider2D>().isTrigger = true;
 			rb.isKinematic = true;
+			rb.velocity = Vector2.zero;
 			isUsed = true;
 		}
 
