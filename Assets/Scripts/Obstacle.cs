@@ -8,7 +8,7 @@ public class Obstacle : MonoBehaviour
 
 	private void Update()
 	{
-		transform.Rotate(0, 0, moveSpeed);
-		transform.Translate(new Vector3(moveSpeed * -0.01f, 0, 0), Space.World);
+		transform.Rotate(0, 0, moveSpeed * (Time.deltaTime * 50.0f));
+		transform.Translate(new Vector3(-moveSpeed * Time.deltaTime, 0, 0), Space.World);
 	}
 }

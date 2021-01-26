@@ -28,7 +28,7 @@ public class Control : MonoBehaviour
 		}
 	}
 
-	private void OnCollisionEnter2D(Collision2D col)
+	private void OnCollisionStay2D(Collision2D col)
 	{
 		if(gameObject.tag == "Crate" && col.collider.CompareTag("Obstacle") && !isUsed)
 		{
@@ -41,14 +41,20 @@ public class Control : MonoBehaviour
 
 		if (col.collider.CompareTag("Player"))
 		{
-			isUsed = true;
 			if(CompareTag("Springveer"))
 			{
 				anim.SetTrigger("Activate");
+				GetComponent<Collider2D>().isTrigger = true;
+				rb.isKinematic = true;
+				rb.velocity = Vector2.zero;
+				isUsed = true;
 			}
 			if (CompareTag("Platform"))
 			{
 				GetComponent<Collider2D>().isTrigger = true;
+				rb.isKinematic = true;
+				rb.velocity = Vector2.zero;
+				isUsed = true;
 			}
 		}
 	}

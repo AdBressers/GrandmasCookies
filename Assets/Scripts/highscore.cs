@@ -5,14 +5,20 @@ using UnityEngine.UI;
 
 public class highscore : MonoBehaviour
 {
+    public static highscore Instance;
 
     public Text stringscore;
     public Text Highscore;
-    int score;
+    public int score;
     public static bool givepoint;
 
-    // Start is called before the first frame update
-    void Start()
+	private void Awake()
+	{
+        Instance = this;
+	}
+
+	// Start is called before the first frame update
+	void Start()
     {
         Highscore.text = PlayerPrefs.GetInt("HighScores", 0).ToString();
         score = 0;

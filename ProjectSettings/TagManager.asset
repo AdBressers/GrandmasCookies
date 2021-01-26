@@ -10,6 +10,7 @@ TagManager:
   - Platform
   - Obstacle
   - Springveer
+  - DeathBorder
   layers:
   - Default
   - TransparentFX
