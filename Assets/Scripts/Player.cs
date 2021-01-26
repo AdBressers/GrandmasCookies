@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
 	private Rigidbody2D rb;
 	public float jumpForce = 500f;
 	public float frameTime = 0.4f;
+	public float moveSpeed = 250f;
 
 	private SpriteRenderer spriteRend;
 	public Sprite[] sprites = new Sprite[2];
@@ -21,7 +22,14 @@ public class Player : MonoBehaviour
 
 	private void Update()
 	{
-		if(animateTime > frameTime)
+		rb.velocity = new Vector2(moveSpeed * Time.fixedDeltaTime, rb.velocity.y);
+
+		//if (rb.velocity.y > 1.0f)
+		//{
+		//	rb.velocity = Vector2.zero;
+		//}
+
+		if (animateTime > frameTime)
 		{
 			animateTime = 0;
 			frame = (frame + 1) % 2;

@@ -33,7 +33,7 @@ public class Control : MonoBehaviour
 		if(gameObject.tag == "Crate" && col.collider.CompareTag("Obstacle") && !isUsed)
 		{
 			Destroy(col.gameObject);
-			GetComponent<Collider>().isTrigger = true;
+			GetComponent<Collider2D>().isTrigger = true;
 			rb.isKinematic = true;
 			isUsed = true;
 		}
@@ -45,6 +45,18 @@ public class Control : MonoBehaviour
 			{
 				anim.SetTrigger("Activate");
 			}
+			if (CompareTag("Platform"))
+			{
+				GetComponent<Collider2D>().isTrigger = true;
+			}
+		}
+	}
+
+	private void OnTriggerEnter2D(Collider2D col)
+	{
+		if (col.CompareTag("deletemap"))
+		{
+			Destroy(gameObject);
 		}
 	}
 }
