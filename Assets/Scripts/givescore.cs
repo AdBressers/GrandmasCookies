@@ -21,7 +21,9 @@ public class givescore : MonoBehaviour
         
         if (other.gameObject.CompareTag("Player"))
         {
+
             highscore.givepoint = true;
+            Destroy(gameObject);
         }
     }
 }
