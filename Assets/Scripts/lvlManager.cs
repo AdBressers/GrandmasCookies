@@ -45,6 +45,7 @@ public class lvlManager : MonoBehaviour
 
     private void SpawnLevelPart()
     {
+       
         Transform chosenLevelPart = levelPartList[Random.Range(0, levelPartList.Count)];
         Transform lastLevelartTransform = SpawnLevelPart(chosenLevelPart, lastEndPosition);
         lastEndPosition = lastLevelartTransform.Find("endpos").position;
@@ -55,6 +56,7 @@ public class lvlManager : MonoBehaviour
         border = lastEndPosition;
         if (spawn == true)
         {
+          
             SpawnLevelPart();
             SpawnLevelPart();
             SpawnLevelPart();

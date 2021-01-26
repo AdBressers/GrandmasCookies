@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class lvlverwijderen : MonoBehaviour
+public class givescore : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -16,13 +16,12 @@ public class lvlverwijderen : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider col)
+    void OnTriggerEnter(Collider other)
     {
-
         
-        if (col.gameObject.tag == "deletemap")
+        if (other.gameObject.CompareTag("Player"))
         {
-            Destroy(gameObject);
+            highscore.givepoint = true;
         }
     }
 }
