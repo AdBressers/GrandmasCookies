@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/GrandmaRun.unity
+    guid: 7f872a07099ba51498d4d3a59e738fdb
+  - enabled: 1
+    path: Assets/Scenes/mainmenu.unity
+    guid: f0caef400cf38004084d2b706bb7fd53
+  - enabled: 1
+    path: Assets/Scenes/youdied.unity
+    guid: 409da79364e6f79478f3d0bda25a5d13
   m_configObjects: {}
